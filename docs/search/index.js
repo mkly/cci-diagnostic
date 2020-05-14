@@ -18,7 +18,7 @@ export const buildIndex = pipelines => {
                 wValue.map(job => {
                   const jDoc = {}
                   Object.entries(job).map(([jKey, jValue]) => {
-                    if (jKey !== "canceled_by" && (typeof jValue === "string" || typeof jValue === "number")) {
+                    if (jKey !== "canceled_by" && jKey !== 'stopped_at' && jKey !== 'completed_at' && (typeof jValue === "string" || typeof jValue === "number")) {
                       const prefixJKey = `job_${jKey}`
                       if (fieldsAdded[prefixJKey] === undefined) {
                         me.field(prefixJKey)
@@ -31,7 +31,7 @@ export const buildIndex = pipelines => {
                   jDoc.refid = pId
                   me.add(jDoc)
                 })
-              } else if (wKey !== "canceled_by" && (typeof wValue === "string" || typeof wValue === "number")) {
+              } else if (wKey !== "canceled_by" && wKey !== 'stopped_at' && wKey !== 'completed_at' && (typeof wValue === "string" || typeof wValue === "number")) {
                 const prefixWKey = `workflow_${wKey}`
                 if (fieldsAdded[prefixWKey] === undefined) {
                   me.field(prefixWKey)
