@@ -1,4 +1,4 @@
-export const getPipelines = async (apiToken, projectSlug, pipelines=[], maxPages=4, currentPage=0, nextPageToken=undefined) => {
+export const getPipelines = async (apiToken, projectSlug, pipelines=[], maxPages=10, currentPage=0, nextPageToken=undefined) => {
   const resp = await fetch(`https://circleci.com/api/v2/project/${projectSlug}/pipeline?circle-token=${apiToken}${nextPageToken ? `&page-token=${nextPageToken}` : ""}`)
   if (resp.status !== 200) {
     throw `${resp.status} ${resp.statusText}`
