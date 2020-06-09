@@ -18,7 +18,7 @@ export const buildIndex = pipelines => {
                 wValue.map(job => {
                   const jDoc = {}
                   Object.entries(job).map(([jKey, jValue]) => {
-                    if (jKey !== "canceled_by" && jKey !== 'stopped_at' && jKey !== "approved_by" && jKey !== 'completed_at' && jKey !== "project_slug" && (typeof jValue === "string" || typeof jValue === "number")) {
+                    if (jKey !== "canceled_by" && jKey !== 'stopped_at' && jKey !== "started_at" && jKey !== "approved_by" && jKey !== 'completed_at' && jKey !== "project_slug" && (typeof jValue === "string" || typeof jValue === "number")) {
                       const prefixJKey = `job_${jKey}`
                       if (fieldsAdded[prefixJKey] === undefined) {
                         me.field(prefixJKey)
